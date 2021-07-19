@@ -7,7 +7,7 @@ This extension only has one content script. It simply grabs the element that is 
 ## Install
 
 - Find the latest release (right sidebar in Github) and download + extract the zip file. 
-- Navigate to [`chrome://extensions`](chrome://extensions/) and press `Load unpacked` in the top left. Then, choose the `notion-word-count` folder. The extension should be working now!
+- Navigate to [`chrome://extensions`](chrome://extensions/) and press `Load unpacked` in the top left. Then, choose the `dist` folder from inside the extracted folder. The extension should be working now!
 
 ---
 ## Development
