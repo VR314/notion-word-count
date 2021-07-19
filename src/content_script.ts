@@ -5,8 +5,6 @@ window.addEventListener("load", main, false);
 let currSelectedText = "";
 
 function main() {
-	console.log("content script works!");
-
 	let words: number, chars: number;
 	//TODO: instead of every second, run on click?
 	setInterval(function () {
@@ -23,24 +21,21 @@ function main() {
 		}
 
 		const leftMenuItem = $(
-			"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div"
+			"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div > div > div > div"
 		);
-		if (leftMenuItem.length && leftMenuItem.children().children().length <= 1) {
+		if (leftMenuItem.length && leftMenuItem.length <= 1) {
 			const leftMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px;">${words} words, ${chars} chars</div>`;
-			leftMenuItem.children().prepend(leftMenuHTML);
+			leftMenuItem.before(leftMenuHTML);
 		} else {
 			const rightMenuItem = $(
-				"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div"
+				"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div > div > div > div"
 			);
-			if (
-				rightMenuItem.length &&
-				rightMenuItem.children().children().length <= 1
-			) {
+			if (rightMenuItem.length && rightMenuItem.length <= 1) {
 				const rightMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); margin-bottom: 4px;">${words} words, ${chars} chars</div>`;
-				rightMenuItem.children().prepend(rightMenuHTML);
+				rightMenuItem.before(rightMenuHTML);
 			}
 		}
-	}, 1000);
+	}, 200);
 }
 
 type WordsAndChars = {
