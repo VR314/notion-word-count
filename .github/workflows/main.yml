@@ -1,9 +1,9 @@
 name: Zip Files
 
 on:
-  release:
-    types: [published]
-
+  push:
+    tags:
+      - '*'
 jobs:
   zip-files:
     runs-on: ubuntu-latest
@@ -14,4 +14,11 @@ jobs:
           files: dist/
           recursive: false
           dest: notion-word-count.zip
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: notion-word-count.zip
+          asset_name: mything
+          tag: ${{ github.ref }}
+          overwrite: true
 
