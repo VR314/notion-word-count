@@ -15,7 +15,6 @@ function main() {
 			// only log on change
 			if (x != currSelectedText) {
 				currSelectedText = x;
-				console.log(x);
 				({ words, chars } = countWordsAndChars(currSelectedText));
 			}
 		}
