@@ -3,6 +3,12 @@
   "name": "Notion Word Count",
   "description": "Chrome extension to count words in selected Notion blocks.",
   "version": "0.1",
+  "icons": {
+    "16": "wc-16.png",
+    "48": "wc-48.png",
+    "32": "wc-32.png",
+    "128": "wc-128.png"
+  },
   "content_scripts": [
     {
       "matches": [

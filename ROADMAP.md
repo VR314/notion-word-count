@@ -7,5 +7,5 @@
 - [x] Show in right click modal
   - [ ] Handle this separate modal: ![Image](images/small_rightclick_modal.png)
 - [ ] Get selected text (via browser) when selecting text inside a block and render WC in small top side modal
-
+- [ ] Make a (less bad) icon
 - [ ] Explore making another extension for a Notion status bar (like in Word, VSCode) to show all sorts of relevant info
