@@ -18,7 +18,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: notion-word-count.zip
-          asset_name: mything
+          asset_name: notion-word-count.zip
           tag: ${{ github.ref }}
           overwrite: true
 
