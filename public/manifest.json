@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Notion Word Count",
+  "description": "Chrome extension to count words in selected Notion blocks.",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.notion.so/*"
+      ],
+      "js": [
+        "js/vendor.js",
+        "js/content_script.js"
+      ]
+    }
+  ]
+}
