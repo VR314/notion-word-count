@@ -20,7 +20,8 @@ function main() {
 			}
 		}
 
-		if (chars) { // if chars === 0, then 
+		if (chars) {
+			// if chars === 0, then
 			const leftMenuItem = $(
 				"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div > div > div > div"
 			);
