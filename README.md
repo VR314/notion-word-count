@@ -2,7 +2,13 @@
 
 Notion has a word count for a whole page, but what if you want to check the number of words/characters in a selected block? This extension does just that.
 
-This extension only has one content script. At a high level, it simply grabs the element that is indicated as selected, and gets the content of that block.
+This extension only has one content script. It simply grabs the element that is indicated as selected, gets the content of that block, finds the number of words/chars, and appends an element to the menus to display the relevant info.
+
+## Stack
+- Typescript
+- JQuery (DOM manipulation)
+- NPM (package management)
+- Webpack (bundling)
 
 ## Install deps
 
