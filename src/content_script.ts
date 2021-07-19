@@ -3,7 +3,6 @@ import $ from "jquery";
 window.addEventListener("load", main, false);
 
 let currSelectedText = "";
-let injected = false;
 
 function main() {
 	console.log("content script works!");
@@ -20,19 +19,26 @@ function main() {
 				currSelectedText = x;
 				console.log(x);
 				({ words, chars } = countWordsAndChars(currSelectedText));
-				injected = false;
 			}
 		}
 
 		const leftMenuItem = $(
 			"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div"
 		);
-
-		if (!injected && leftMenuItem.length) {
-			console.log(leftMenuItem.children().length);
-			const leftMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${words} words, ${chars} chars</div>`;
+		if (leftMenuItem.length && leftMenuItem.children().children().length <= 1) {
+			const leftMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px;">${words} words, ${chars} chars</div>`;
 			leftMenuItem.children().prepend(leftMenuHTML);
-			injected = true;
+		} else {
+			const rightMenuItem = $(
+				"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div"
+			);
+			if (
+				rightMenuItem.length &&
+				rightMenuItem.children().children().length <= 1
+			) {
+				const rightMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); margin-bottom: 4px;">${words} words, ${chars} chars</div>`;
+				rightMenuItem.children().prepend(rightMenuHTML);
+			}
 		}
 	}, 1000);
 }
