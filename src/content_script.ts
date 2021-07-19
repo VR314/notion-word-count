@@ -3,10 +3,13 @@ import $ from "jquery";
 window.addEventListener("load", main, false);
 
 let currSelectedText = "";
+let injected = false;
 
 function main() {
 	console.log("content script works!");
 
+	let words: number, chars: number;
+	//TODO: instead of every second, run on click?
 	setInterval(function () {
 		const halo = $("div.notion-selectable-halo");
 		if (halo.length) {
@@ -16,8 +19,20 @@ function main() {
 			if (x != currSelectedText) {
 				currSelectedText = x;
 				console.log(x);
-				console.log(countWordsAndChars(x));
+				({ words, chars } = countWordsAndChars(currSelectedText));
+				injected = false;
 			}
+		}
+
+		const leftMenuItem = $(
+			"#notion-app > div > div.notion-overlay-container.notion-default-overlay-container > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > div > div.notion-scroller.vertical > div:nth-child(2) > div"
+		);
+
+		if (!injected && leftMenuItem.length) {
+			console.log(leftMenuItem.children().length);
+			const leftMenuHTML = `<div style="font-size: 12px; line-height: 16px; color: rgba(255, 255, 255, 0.4); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${words} words, ${chars} chars</div>`;
+			leftMenuItem.children().prepend(leftMenuHTML);
+			injected = true;
 		}
 	}, 1000);
 }
