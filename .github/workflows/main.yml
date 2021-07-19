@@ -14,13 +14,8 @@ jobs:
       - uses: montudor/action-zip@v1
         with:
           args: zip -qq -r notion-word-count.zip ${{ github.workspace }}
-
-      - uses: papeloto/action-zip@v1
-        with:
-          files: ${{ github.workspace }}/dist/
-          recursive: false
-          dest: notion-word-count.zip
       - run: "ls -la  ${{ github.workspace }}"
+      - run: "ls -la  ${{ github.workspace }}/dist"
       - uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
