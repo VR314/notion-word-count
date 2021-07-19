@@ -1,6 +1,6 @@
 {
   "name": "notion-word-count",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "counts words in selected notion blocks",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
